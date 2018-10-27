@@ -1,1 +1,1 @@
-# bd-project
+Scripts para criação e exclusão de tabelas em um banco de dados relacional.
