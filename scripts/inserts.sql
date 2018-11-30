@@ -46,9 +46,10 @@ INSERT INTO projeto (codigo, mat_professor, orcamento, titulo, descricao, dt_ini
   SELECT            1000, 100, 32676.32, 'Projeto 1', 'Descrição do projeto 1', TO_DATE('07/03/2017', 'dd/mm/yyyy'), TO_DATE('07/03/2018', 'dd/mm/yyyy'), 0 FROM dual
   UNION ALL SELECT  1001, 200, 265535.65, 'Projeto 2', 'Descrição do projeto 2', TO_DATE('08/09/2008', 'dd/mm/yyyy'), TO_DATE('08/09/2010', 'dd/mm/yyyy'), 0 FROM dual
   UNION ALL SELECT  1002, 300, 44132.12, 'Projeto 3', 'Descrição do projeto 3', TO_DATE('02/04/2015', 'dd/mm/yyyy'), TO_DATE('02/04/2017', 'dd/mm/yyyy'), 0 FROM dual
-  UNION ALL SELECT  1003, 400, 127348.29, 'Projeto 4', 'Descrição do projeto 4', TO_DATE('04/11/2007', 'dd/mm/yyyy'), TO_DATE('04/11/2009', 'dd/mm/yyyy'), 0 FROM dual
+  UNION ALL SELECT  1003, 400, 9127348.29, 'Projeto 4', 'Descrição do projeto 4', TO_DATE('04/11/2007', 'dd/mm/yyyy'), TO_DATE('04/11/2009', 'dd/mm/yyyy'), 0 FROM dual
   UNION ALL SELECT  1004, 500, 20000.99, 'Projeto 5', 'Descrição do projeto 5', TO_DATE('08/09/2016', 'dd/mm/yyyy'), TO_DATE('08/09/2018', 'dd/mm/yyyy'), 0 FROM dual
-  UNION ALL SELECT  1005, 600, 10000.00, 'Projeto 6', 'Descrição do projeto 6', TO_DATE('08/09/2003', 'dd/mm/yyyy'), TO_DATE('08/09/2006', 'dd/mm/yyyy'), 0 FROM dual
+  UNION ALL SELECT  1005, 600, 1000000.00, 'Projeto 6', 'Descrição do projeto 6', TO_DATE('08/09/2003', 'dd/mm/yyyy'), TO_DATE('08/09/2006', 'dd/mm/yyyy'), 0 FROM dual
+  UNION ALL SELECT  1006, 300, 150000.00, 'Projeto 7', 'Descrição do projeto 7', TO_DATE('22/05/2010', 'dd/mm/yyyy'), TO_DATE('22/05/2012', 'dd/mm/yyyy'), 0 FROM dual
 ;
 
 INSERT INTO laboratorio (codigo, nome, local, mat_professor)
