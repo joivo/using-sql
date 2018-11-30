@@ -180,3 +180,9 @@ INSERT INTO agencia_projeto (cod_agencia, cod_projeto)
   UNION ALL SELECT  4, 1000 FROM dual
   UNION ALL SELECT  5, 1003 FROM dual
 ;
+
+UPDATE professor SET cod_departamento = 1 WHERE matricula = 400;
+UPDATE professor SET cod_departamento = 2 WHERE matricula = 200;
+UPDATE professor SET cod_departamento = 3 WHERE matricula = 300;
+UPDATE professor SET cod_departamento = 4 WHERE matricula = 500 OR matricula = 600;
+UPDATE professor SET cod_departamento = 5 WHERE matricula = 100;
