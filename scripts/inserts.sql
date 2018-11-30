@@ -109,12 +109,12 @@ INSERT INTO aluno (matricula, nome, nivel, mat_professor, cod_projeto, cod_cnpq,
   SELECT            1, 'Rafael Cavalcante', 'Graduacao', 100, 1000, 5, 2, TO_DATE('18/08/1994', 'dd/mm/yyyy'), 4, 600, TO_DATE('07/03/2017', 'dd/mm/yyyy'), TO_DATE('07/03/2018', 'dd/mm/yyyy'), 20 FROM dual
   UNION ALL SELECT  2, 'Leila Rocha', 'Graduacao', null, null, null, null, TO_DATE('11/06/2001', 'dd/mm/yyyy'), null, null, null, null, null FROM dual --Nao participa de projeto e nem tem bolsa
   UNION ALL SELECT  3, 'Marina Martins', 'Graduacao', 100, 1000, 5, 1, TO_DATE('05/11/2001', 'dd/mm/yyyy'), 4, 800, TO_DATE('07/03/2017', 'dd/mm/yyyy'), TO_DATE('07/03/2018', 'dd/mm/yyyy'), 20 FROM dual
-  UNION ALL SELECT  4, 'Ryan Cardoso', 'Mestrado', 300, 1002, 2, 1, TO_DATE('23/07/1992', 'dd/mm/yyyy'), 1, 1500, TO_DATE('08/09/2016', 'dd/mm/yyyy'), TO_DATE('08/09/2018', 'dd/mm/yyyy'), 20 FROM dual -- Financiado pela CAPES
-  UNION ALL SELECT  5, 'Clara Castro', 'Mestrado', 400, 1003, 4, 1, TO_DATE('22/09/1980', 'dd/mm/yyyy'), 5, 1500, TO_DATE('04/11/2007', 'dd/mm/yyyy'), TO_DATE('04/11/2009', 'dd/mm/yyyy'), 20 FROM dual -- Financiado pela CAPES
+  UNION ALL SELECT  4, 'Ryan Cardoso', 'Mestrado', 300, 1002, 2, 1, TO_DATE('23/07/1992', 'dd/mm/yyyy'), 1, 1500, TO_DATE('08/09/2016', 'dd/mm/yyyy'), TO_DATE('08/09/2018', 'dd/mm/yyyy'), 20 FROM dual
+  UNION ALL SELECT  5, 'Clara Castro', 'Mestrado', 400, 1003, 4, 1, TO_DATE('22/09/1980', 'dd/mm/yyyy'), 5, 1500, TO_DATE('04/11/2007', 'dd/mm/yyyy'), TO_DATE('04/11/2009', 'dd/mm/yyyy'), 20 FROM dual
   UNION ALL SELECT  6, 'Thiago Sousa', 'Mestrado', 500, 1004, 3, 2, TO_DATE('04/11/1990', 'dd/mm/yyyy'), null, null, null, null, null FROM dual -- Mestrado sem bolsa
-  UNION ALL SELECT  7, 'Beatrice Costa', 'Doutorado', 200, 1001, 1, 1, TO_DATE('26/06/1985', 'dd/mm/yyyy'), 3, 2200, TO_DATE('08/09/2008', 'dd/mm/yyyy'), TO_DATE('08/09/2010', 'dd/mm/yyyy'), 20 FROM dual -- Financiado pela CAPES
-  UNION ALL SELECT  8, 'Tomás Oliveira', 'Doutorado', 300, 1005, 3, 3, TO_DATE('08/04/1988', 'dd/mm/yyyy'), 2, 2200, TO_DATE('08/09/2003', 'dd/mm/yyyy'), TO_DATE('08/09/2005', 'dd/mm/yyyy'), 20 FROM dual -- Financiado pela CAPES
-  UNION ALL SELECT  9, 'André Silva', 'Doutorado', 200, 1001, 1, 1, TO_DATE('16/10/1990', 'dd/mm/yyyy'), 3, 2200, TO_DATE('08/09/2008', 'dd/mm/yyyy'), TO_DATE('08/09/2010', 'dd/mm/yyyy'), 20 FROM dual -- Financiado pela CAPES
+  UNION ALL SELECT  7, 'Beatrice Costa', 'Doutorado', 200, 1001, 1, 1, TO_DATE('26/06/1985', 'dd/mm/yyyy'), 3, 2200, TO_DATE('08/09/2008', 'dd/mm/yyyy'), TO_DATE('08/09/2010', 'dd/mm/yyyy'), 20 FROM dual
+  UNION ALL SELECT  8, 'Tomás Oliveira', 'Doutorado', 300, 1005, 3, 3, TO_DATE('08/04/1988', 'dd/mm/yyyy'), 2, 2200, TO_DATE('08/09/2003', 'dd/mm/yyyy'), TO_DATE('08/09/2005', 'dd/mm/yyyy'), 20 FROM dual
+  UNION ALL SELECT  9, 'André Silva', 'Doutorado', 200, 1001, 1, 1, TO_DATE('16/10/1990', 'dd/mm/yyyy'), 3, 2200, TO_DATE('08/09/2008', 'dd/mm/yyyy'), TO_DATE('08/09/2010', 'dd/mm/yyyy'), 20 FROM dual
 ;
 
 INSERT INTO pesquisa_projeto (cod_cnpq, cod_sub_cnpq, cod_projeto)
