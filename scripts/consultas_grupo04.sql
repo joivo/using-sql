@@ -44,3 +44,8 @@ WHERE p.matricula = pr.mat_professor AND ps.cod_projeto = pr.codigo
 SELECT DISTINCT a.nome, a.matricula
 FROM aluno a, publicacao p, aluno_publicacao ap
 WHERE a.nivel = 'Doutorado' AND a.matricula = ap.mat_aluno AND p.codigo = ap.cod_publicacao AND p.ano = 2009;
+
+--Consulta 13
+SELECT SUM(orcamento)
+FROM projeto
+WHERE dt_inicio >= TO_DATE('01/01/2008', 'dd/mm/yyyy') AND dt_inicio <= TO_DATE('31/12/2008', 'dd/mm/yyyy');
