@@ -45,6 +45,16 @@ SELECT AG.nome
 FROM aluno A, agencia_financiadora AG
 WHERE A.nivel = 'Graduacao' AND A.valor_bolsa < 700 AND AG.codigo = A.cod_agencia;
 
+-- Consulta 08
+WITH aluno_n_publicacoes (matricula, num_publicacoes) AS
+  (SELECT a.matricula, COUNT(*)
+  FROM aluno a, publicacao p, aluno_publicacao ap
+  WHERE a.matricula = ap.mat_aluno AND p.codigo = ap.cod_publicacao
+  GROUP BY a.matricula)
+SELECT a.*
+FROM aluno a, aluno_n_publicacoes ap
+WHERE a.matricula = ap.matricula AND UPPER(a.nivel) = 'MESTRADO' AND ap.num_publicacoes = (SELECT COUNT(*) FROM publicacao);
+
 -- Consulta 11
 SELECT DISTINCT a.nome, a.matricula
 FROM aluno a, publicacao p, aluno_publicacao ap
