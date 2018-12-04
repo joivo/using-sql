@@ -14,7 +14,7 @@ SELECT P.* FROM publicacao P, aluno A
 WHERE P.cod_projeto = A.cod_projeto AND UPPER(A.nivel) = 'MESTRADO';
 
 -- Consulta 04
-SELECT DISTINCT a.nome
+SELECT DISTINCT a.*
 FROM agencia_financiadora a, projeto p, agencia_projeto ap
 WHERE ap.cod_agencia = a.codigo AND ap.cod_projeto = p.codigo AND p.codigo IN
   (SELECT p.codigo
@@ -25,10 +25,10 @@ WHERE ap.cod_agencia = a.codigo AND ap.cod_projeto = p.codigo AND p.codigo IN
 --Consulta 05
 SELECT *
 FROM projeto
-WHERE dt_inicio > TO_DATE('31/12/2000', 'dd/mm/yyyy') AND orcamento > 900000;
+WHERE dt_inicio > TO_DATE('31/12/2007', 'dd/mm/yyyy') AND orcamento > 900000;
 
 -- Consulta 06
-SELECT p.nome, p.matricula, pr.codigo AS cod_projeto, ps.soma_patentes
+SELECT p.*
 FROM
   professor p,
   projeto pr,
@@ -60,15 +60,26 @@ WITH n_projeto_professor(num_projetos, mat_professor) AS
   (SELECT COUNT(*), mat_professor
   FROM projeto
   GROUP BY mat_professor)
-SELECT mat_professor, p.nome, np.num_projetos
+SELECT p.*
 FROM n_projeto_professor np, professor p
 WHERE p.matricula = np.mat_professor AND num_projetos =
   (SELECT MAX(num_projetos)
   FROM n_projeto_professor)
 ;
 
+-- Consulta 10
+WITH n_alunos_graduacao (cod_cnpq, cod_sub_cnpq, num_alunos) AS
+  (SELECT a.cod_cnpq, a.cod_sub_cnpq, COUNT(*)
+  FROM aluno a
+  WHERE UPPER(a.nivel) = 'GRADUACAO'
+  GROUP BY a.cod_cnpq, a.cod_sub_cnpq)
+SELECT ng.num_alunos, lp.*
+FROM linha_de_pesquisa lp
+LEFT OUTER JOIN n_alunos_graduacao ng
+ON lp.cod_cnpq = ng.cod_cnpq AND lp.cod_sub_cnpq = ng.cod_sub_cnpq;
+
 -- Consulta 11
-SELECT DISTINCT a.nome, a.matricula
+SELECT DISTINCT a.*
 FROM aluno a, publicacao p, aluno_publicacao ap
 WHERE UPPER(a.nivel) = 'DOUTORADO' AND a.matricula = ap.mat_aluno AND p.codigo = ap.cod_publicacao AND p.ano = 2009;
 
