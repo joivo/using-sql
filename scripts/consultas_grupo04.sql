@@ -1,5 +1,5 @@
 --Consulta 01
-CREATE VIEW ViewAlunoProj2000 AS 
+CREATE VIEW ViewAlunoProj2000 AS
 SELECT * FROM aluno
 WHERE cod_projeto IS NOT NULL AND dt_nasc > TO_DATE('31/12/2000', 'dd/mm/yyyy');
 
@@ -10,8 +10,8 @@ GROUP BY AG.nome;
 
 --Consulta 03
 CREATE VIEW PublicacaoAlunosMestrado AS
-SELECT P.* FROM publicacao P, aluno A
-WHERE P.cod_projeto = A.cod_projeto AND UPPER(A.nivel) = 'MESTRADO';
+SELECT P.* FROM publicacao P, aluno A, aluno_publicacao AP
+WHERE AP.mat_aluno = A.matricula AND AP.cod_publicacao = P.codigo AND UPPER(A.nivel) = 'MESTRADO';
 
 -- Consulta 04
 SELECT DISTINCT a.*
