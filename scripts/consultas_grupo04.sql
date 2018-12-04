@@ -1,14 +1,14 @@
---Consulta 1
+--Consulta 01
 CREATE VIEW PublicacaoAlunosMestrado AS
 SELECT P.* FROM publicacao P, aluno A
 WHERE A.cod_publicacao = P.codigo AND A.nivel = 'Mestrado';
 
---Consulta 2
+--Consulta 02
 SELECT AG.nome, COUNT(*) FROM aluno A, agencia_financiadora AG
 WHERE nivel = 'Mestrado' AND valor_bolsa IS NOT NULL AND A.cod_agencia = AG.codigo
 GROUP BY AG.nome;
 
---Consulta 3
+--Consulta 03
 CREATE VIEW PublicacaoAlunosMestrado AS
 SELECT P.* FROM publicacao P, aluno A
 WHERE P.cod_projeto = A.cod_projeto AND A.nivel = 'Mestrado';
@@ -22,7 +22,7 @@ WHERE ap.cod_agencia = a.codigo AND ap.cod_projeto = p.codigo AND p.codigo IN
   WHERE p.codigo = pu.cod_projeto AND pu.ano >= 2004 AND pu.ano <= 2010)
 ;
 
---Consulta 5
+--Consulta 05
 SELECT *
 FROM projeto
 WHERE dt_inicio > TO_DATE('31/12/2000', 'dd/mm/yyyy') AND orcamento > 900000;
@@ -40,7 +40,7 @@ FROM
 WHERE p.matricula = pr.mat_professor AND ps.cod_projeto = pr.codigo
 ;
 
---Consulta 7
+--Consulta 07
 SELECT AG.nome
 FROM aluno A, agencia_financiadora AG
 WHERE A.nivel = 'Graduacao' AND A.valor_bolsa < 700 AND AG.codigo = A.cod_agencia;
