@@ -1,7 +1,7 @@
 --Consulta 01
-CREATE VIEW PublicacaoAlunosMestrado AS
-SELECT P.* FROM publicacao P, aluno A
-WHERE A.cod_publicacao = P.codigo AND UPPER(A.nivel) = 'MESTRADO';
+CREATE VIEW ViewAlunoProj2000 AS 
+SELECT * FROM aluno
+WHERE cod_projeto IS NOT NULL AND dt_nasc > TO_DATE('31/12/2000', 'dd/mm/yyyy');
 
 --Consulta 02
 SELECT AG.nome, COUNT(*) FROM aluno A, agencia_financiadora AG
