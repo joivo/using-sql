@@ -40,6 +40,11 @@ FROM
 WHERE p.matricula = pr.mat_professor AND ps.cod_projeto = pr.codigo
 ;
 
+--Consulta 7
+SELECT AG.nome
+FROM aluno A, agencia_financiadora AG
+WHERE A.nivel = 'Graduacao' AND A.valor_bolsa < 700 AND AG.codigo = A.cod_agencia;
+
 -- Consulta 11
 SELECT DISTINCT a.nome, a.matricula
 FROM aluno a, publicacao p, aluno_publicacao ap
