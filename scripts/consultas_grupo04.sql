@@ -1,17 +1,17 @@
 --Consulta 01
 CREATE VIEW PublicacaoAlunosMestrado AS
 SELECT P.* FROM publicacao P, aluno A
-WHERE A.cod_publicacao = P.codigo AND A.nivel = 'Mestrado';
+WHERE A.cod_publicacao = P.codigo AND UPPER(A.nivel) = 'MESTRADO';
 
 --Consulta 02
 SELECT AG.nome, COUNT(*) FROM aluno A, agencia_financiadora AG
-WHERE nivel = 'Mestrado' AND valor_bolsa IS NOT NULL AND A.cod_agencia = AG.codigo
+WHERE UPPER(nivel) = 'MESTRADO' AND valor_bolsa IS NOT NULL AND A.cod_agencia = AG.codigo
 GROUP BY AG.nome;
 
 --Consulta 03
 CREATE VIEW PublicacaoAlunosMestrado AS
 SELECT P.* FROM publicacao P, aluno A
-WHERE P.cod_projeto = A.cod_projeto AND A.nivel = 'Mestrado';
+WHERE P.cod_projeto = A.cod_projeto AND UPPER(A.nivel) = 'MESTRADO';
 
 -- Consulta 04
 SELECT DISTINCT a.nome
@@ -43,7 +43,7 @@ WHERE p.matricula = pr.mat_professor AND ps.cod_projeto = pr.codigo
 --Consulta 07
 SELECT AG.nome
 FROM aluno A, agencia_financiadora AG
-WHERE A.nivel = 'Graduacao' AND A.valor_bolsa < 700 AND AG.codigo = A.cod_agencia;
+WHERE UPPER(A.nivel) = 'GRADUACAO' AND A.valor_bolsa < 700 AND AG.codigo = A.cod_agencia;
 
 -- Consulta 08
 WITH aluno_n_publicacoes (matricula, num_publicacoes) AS
@@ -55,12 +55,34 @@ SELECT a.*
 FROM aluno a, aluno_n_publicacoes ap
 WHERE a.matricula = ap.matricula AND UPPER(a.nivel) = 'MESTRADO' AND ap.num_publicacoes = (SELECT COUNT(*) FROM publicacao);
 
+-- Consulta 09
+WITH n_projeto_professor(num_projetos, mat_professor) AS
+  (SELECT COUNT(*), mat_professor
+  FROM projeto
+  GROUP BY mat_professor)
+SELECT mat_professor, p.nome, np.num_projetos
+FROM n_projeto_professor np, professor p
+WHERE p.matricula = np.mat_professor AND num_projetos =
+  (SELECT MAX(num_projetos)
+  FROM n_projeto_professor)
+;
+
 -- Consulta 11
 SELECT DISTINCT a.nome, a.matricula
 FROM aluno a, publicacao p, aluno_publicacao ap
-WHERE a.nivel = 'Doutorado' AND a.matricula = ap.mat_aluno AND p.codigo = ap.cod_publicacao AND p.ano = 2009;
+WHERE UPPER(a.nivel) = 'DOUTORADO' AND a.matricula = ap.mat_aluno AND p.codigo = ap.cod_publicacao AND p.ano = 2009;
+
+-- Consulta 12
+SELECT COUNT(DISTINCT p.codigo) AS num_publicacoes
+FROM aluno a, publicacao p, aluno_publicacao ap
+WHERE a.matricula = ap.mat_aluno AND p.codigo = ap.cod_publicacao AND UPPER(a.nivel) = 'GRADUACAO';
 
 --Consulta 13
 SELECT SUM(orcamento)
 FROM projeto
 WHERE dt_inicio >= TO_DATE('01/01/2008', 'dd/mm/yyyy') AND dt_inicio <= TO_DATE('31/12/2008', 'dd/mm/yyyy');
+
+-- Consulta 14
+SELECT DISTINCT a.nivel, a.nome
+FROM aluno a, publicacao p, aluno_publicacao ap
+WHERE a.matricula = ap.mat_aluno AND p.codigo = ap.cod_publicacao AND p.ano < 2016;
