@@ -1,1 +1,1 @@
-Scripts para criação e exclusão de tabelas em um banco de dados relacional.
+Scripts para exercício de SQL com criação e exclusão de tabelas, inserções, definição de consultas, gatilhos e visões.
