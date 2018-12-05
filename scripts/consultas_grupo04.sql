@@ -97,3 +97,25 @@ WHERE dt_inicio >= TO_DATE('01/01/2008', 'dd/mm/yyyy') AND dt_inicio <= TO_DATE(
 SELECT DISTINCT a.nivel, a.nome
 FROM aluno a, publicacao p, aluno_publicacao ap
 WHERE a.matricula = ap.mat_aluno AND p.codigo = ap.cod_publicacao AND p.ano < 2016;
+
+-- Trigger 15
+
+CREATE OR REPLACE TRIGGER IncrementPremiacao
+  AFTER INSERT ON patente  
+  FOR EACH ROW
+    BEGIN
+      UPDATE projeto
+      SET premiacao = premiacao + 1
+      WHERE codigo = :NEW.cod_projeto;
+    END;
+
+-- Trigger 16
+
+CREATE OR REPLACE TRIGGER OrcamentoConstraint
+  BEFORE INSERT OR UPDATE ON projeto
+  FOR EACH ROW
+    BEGIN
+      IF (:NEW.orcamento < 1000) THEN
+        RAISE_APPLICATION_ERROR(-20000, 'Nenhum projeto com orçamento menor que 1000$ pode ser inserido.'); 
+      END IF;  
+    END;
